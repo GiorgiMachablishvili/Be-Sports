@@ -98,6 +98,11 @@ class LikeWorkoutViewCell: UICollectionViewCell {
             likeViewButton.setTitle("\(currentLikes - 1)", for: .normal)
             likeViewButton.setImage(UIImage(named: "heart")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
         }
+
+        NotificationCenter.default.post(
+                name: NSNotification.Name("unLikeWorkout.view.observer"),
+                object: nil
+            )
     }
 
     func configure(with data: Workouts) {
