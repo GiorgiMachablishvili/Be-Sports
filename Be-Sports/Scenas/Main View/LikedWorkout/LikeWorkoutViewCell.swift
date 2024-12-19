@@ -88,6 +88,11 @@ class LikeWorkoutViewCell: UICollectionViewCell {
     }
 
     @objc func likeViewButtonTapped() {
+        let currentLikes = Int(likeViewButton.title(for: .normal) ?? "0") ?? 0
+        if currentLikes > 0 {
+            likeViewButton.setTitle("\(currentLikes - 1)", for: .normal)
+            likeViewButton.setImage(UIImage(named: "heart")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
+        }
         didTapOnLikeButton?()
     }
     
@@ -103,11 +108,15 @@ class LikeWorkoutViewCell: UICollectionViewCell {
         workoutInfoView.taskView.taskNumberLabel.text = String(data.taskCount)
         workoutInfoView.timeView.remainingTime = Double(data.time)
         workoutInfoView.levelView.levelInfoLabel.text = data.level.rawValue
-        likeViewButton.setTitle("\(data.completers.count)", for: .normal)
+//        likeViewButton.setTitle("\(data.completers.count)", for: .normal)
+        likeViewButton.setTitle("\(data.likeCount)", for: .normal)
+
+        let buttonImage = data.isSelected ? "heartFilled" : "heart"
+        likeViewButton.setImage(UIImage(named: buttonImage)?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
 
         if let url = URL(string: data.image) {
             workoutImageLikeView.kf.setImage(with: url)
         }
-        updateLikeState()
+//        updateLikeState()
     }
 }

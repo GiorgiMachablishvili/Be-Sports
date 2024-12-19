@@ -130,7 +130,7 @@ class WorkoutViewController: UIViewController {
                 print("Fetched workouts count: \(workouts.count)")
                 self?.allWorkouts = workouts
                 self?.displayedWorkouts = workouts
-                
+
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
@@ -147,7 +147,7 @@ class WorkoutViewController: UIViewController {
             case .success(let response):
                 guard let selectedLevel = self?.selectedLevel else { return }
                 self?.displayedWorkouts = response
-                self?.allWorkouts = response
+//                self?.allWorkouts = response
 
                 self?.filterWorkouts(by: selectedLevel)
                 NotificationCenter.default.post(
@@ -163,7 +163,7 @@ class WorkoutViewController: UIViewController {
             case .failure(let error):
                 print("Error updating like: \(error)")
                 DispatchQueue.main.async {
-//                    self.updateLikeState()
+                    //                    self.updateLikeState()
                 }
             }
         }
@@ -181,9 +181,9 @@ class WorkoutViewController: UIViewController {
     }
 
     @objc private func didTapUserId() {
-        //        self.allWorkouts.removeAll()
-        //        self.displayedWorkouts.removeAll()
-        //        fetchWorkoutCurrentUserInfo()
+        self.allWorkouts.removeAll()
+        self.displayedWorkouts.removeAll()
+        fetchWorkoutCurrentUserInfo()
         print("....id....")
     }
 
@@ -266,10 +266,34 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
         let workout = displayedWorkouts[indexPath.row]
         let selectedLevel = workout.level.rawValue
         cell.configure(with: workout, selectedLevel: selectedLevel)
-        cell.didTapOnLikeButton = { [weak self]  in
-            self?.postLikeState(userId: workout.userId ?? "", workoutId: workout.id)
+
+        // Handle like button action
+        cell.didTapOnLikeButton = { [weak self] in
+            guard let self = self else { return }
+
+            // Track the tapped workout
+            if cell.isLiked {
+                // Update state to simulate a like
+                self.displayedWorkouts[indexPath.row] = self.displayedWorkouts[indexPath.row].copyWith(isSelected: true, likeCount: workout.likeCount + 1)
+            } else {
+                // Update state to simulate an unlike
+                self.displayedWorkouts[indexPath.row] = self.displayedWorkouts[indexPath.row].copyWith(isSelected: false, likeCount: workout.likeCount - 1)
+            }
+
+            // Reload the specific cell
+            self.collectionView.reloadItems(at: [indexPath])
+
+            // Optionally, send the updated state to the backend
+            self.postLikeState(userId: workout.userId ?? "", workoutId: workout.id)
         }
         return cell
+        //        let workout = displayedWorkouts[indexPath.row]
+        //        let selectedLevel = workout.level.rawValue
+        //        cell.configure(with: workout, selectedLevel: selectedLevel)
+        //        cell.didTapOnLikeButton = { [weak self]  in
+        //            self?.postLikeState(userId: workout.userId ?? "", workoutId: workout.id)
+        //        }
+        //        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -297,5 +321,23 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
         hardWorkoutVC.likeViewButton.setTitle(likeNumber, for: .normal)
         hardWorkoutVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(hardWorkoutVC, animated: true)
+    }
+}
+
+extension Workouts {
+    func copyWith(isSelected: Bool, likeCount: Int) -> Workouts {
+        return Workouts(
+            taskName: self.taskName,
+            taskCount: self.taskCount,
+            level: self.level,
+            completers: self.completers,
+            details: self.details,
+            id: self.id,
+            image: self.image,
+            userId: self.userId,
+            isSelected: isSelected,
+            likeCount: likeCount,
+            tasks: self.tasks
+        )
     }
 }

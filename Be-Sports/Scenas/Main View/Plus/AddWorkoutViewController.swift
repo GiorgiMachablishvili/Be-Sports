@@ -159,6 +159,20 @@ class AddWorkoutViewController: UIViewController, ImageViewDelegate {
     }
 
     @objc func didPressRightButton() {
+        let isGuestUser = UserDefaults.standard.bool(forKey: "isGuestUser")
+
+        if isGuestUser {
+            // Show an alert prompting the user to register
+            let alert = UIAlertController(
+                title: "Registration Required",
+                message: "You need to register to save workouts. Please sign up or log in to continue.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
         let workoutImageString = workoutImage()
         let userIdString = userId()
         let selectedLevelString = selectedLevel()

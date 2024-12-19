@@ -17,6 +17,7 @@
 		E34103DD2CF627E700CB0CF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34103DC2CF627E700CB0CF6 /* ProfileViewController.swift */; };
 		E359415C2CFCD29400624C50 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359415B2CFCD29400624C50 /* AddWorkoutViewController.swift */; };
 		E35A458E2D08979A00C99907 /* WorkoutTaskViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A458D2D08979A00C99907 /* WorkoutTaskViewCell.swift */; };
+		E35CAB572D145100009B09C0 /* BlockUserOrWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CAB562D145100009B09C0 /* BlockUserOrWorkout.swift */; };
 		E361C13C2D06E7D000B9D3D7 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361C13B2D06E7D000B9D3D7 /* ImageViewCell.swift */; };
 		E361C13E2D06E81500B9D3D7 /* NameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361C13D2D06E81500B9D3D7 /* NameViewCell.swift */; };
 		E361C1402D06E83D00B9D3D7 /* WorkLevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361C13F2D06E83D00B9D3D7 /* WorkLevelViewCell.swift */; };
@@ -81,6 +82,7 @@
 		E34103DC2CF627E700CB0CF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E359415B2CFCD29400624C50 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		E35A458D2D08979A00C99907 /* WorkoutTaskViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTaskViewCell.swift; sourceTree = "<group>"; };
+		E35CAB562D145100009B09C0 /* BlockUserOrWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserOrWorkout.swift; sourceTree = "<group>"; };
 		E361C13B2D06E7D000B9D3D7 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		E361C13D2D06E81500B9D3D7 /* NameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewCell.swift; sourceTree = "<group>"; };
 		E361C13F2D06E83D00B9D3D7 /* WorkLevelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLevelViewCell.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				E3B8DCAA2D078BCD005A8B19 /* Task.swift */,
 				E3B7E30A2CF876FC00ABCDC4 /* UserInfo.swift */,
+				E35CAB562D145100009B09C0 /* BlockUserOrWorkout.swift */,
 				E36BDCCD2CFEF98A00FA18FA /* Workouts.swift */,
 				E36E2F572CFE57E800613FBD /* WorkoutInfo.swift */,
 				E3A372972D024E260008ED9C /* LikeResponse.swift */,
@@ -481,6 +484,7 @@
 				E3667EEE2CF4F5CB00D1AE68 /* TaskView.swift in Sources */,
 				E32C49F62CF5EB2900C650B3 /* CircularProgressView.swift in Sources */,
 				E39C840A2CF4AB69003177BF /* UIColor+Extention.swift in Sources */,
+				E35CAB572D145100009B09C0 /* BlockUserOrWorkout.swift in Sources */,
 				E31768CB2D0C84DB0043B77E /* WebViewController.swift in Sources */,
 				E32E6D132CF71AB600C17240 /* HardWorkoutViewController.swift in Sources */,
 				E39C84082CF4A978003177BF /* UIFont+Extension.swift in Sources */,
@@ -653,9 +657,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Be-Sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -663,9 +667,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.buss.workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -683,9 +691,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Be-Sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -693,9 +701,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.buss.workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

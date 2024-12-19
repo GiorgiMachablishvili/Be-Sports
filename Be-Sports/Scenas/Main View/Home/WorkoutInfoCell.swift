@@ -54,6 +54,7 @@ class WorkoutInfoCell: UICollectionViewCell {
         super.init(frame: frame)
         setup()
         setupConstraints()
+        doNotBeInteractionEnabledLikeButton()
     }
 
     required init?(coder: NSCoder) {
@@ -93,12 +94,14 @@ class WorkoutInfoCell: UICollectionViewCell {
         }
     }
 
-//    func doNotBeInteractionEnabledLikeButton() {
-//        let isGuestUser = UserDefaults.standard.bool(forKey: "isGuestUser")
-//        likeViewButton.isUserInteractionEnabled = isGuestUser
-//    }
+    func doNotBeInteractionEnabledLikeButton() {
+        let isGuestUser = UserDefaults.standard.bool(forKey: "isGuestUser")
+        likeViewButton.isUserInteractionEnabled = !isGuestUser
+    }
 
     @objc func likeViewButtonTapped() {
+        isLiked.toggle() // Toggle the local state
+        updateLikeState(isSelected: isLiked)
         didTapOnLikeButton?()
     }
 

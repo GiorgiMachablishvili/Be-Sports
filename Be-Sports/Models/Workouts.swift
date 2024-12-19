@@ -31,21 +31,6 @@ struct Workouts: Codable {
         case tasks
     }
 
-    init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            taskName = try container.decode(String.self, forKey: .taskName)
-            taskCount = try container.decode(Int.self, forKey: .taskCount)
-            level = try container.decode(Level.self, forKey: .level)
-            completers = try container.decodeIfPresent([String].self, forKey: .completers) ?? []
-            details = try container.decode(String.self, forKey: .details)
-            id = try container.decode(String.self, forKey: .id)
-            image = try container.decode(String.self, forKey: .image)
-            userId = try container.decodeIfPresent(String.self, forKey: .userId)
-            isSelected = try container.decode(Bool.self, forKey: .isSelected)
-            likeCount = try container.decode(Int.self, forKey: .likeCount)
-            tasks = try container.decode([Task].self, forKey: .tasks)
-        }
-
     enum Level: Codable, Equatable {
         case easy
         case advance

@@ -14,6 +14,9 @@ class HardWorkoutViewController: UIViewController {
     private var blockedUserId: [Workouts] = []
     private var blockedPost: [Workouts] = []
 
+    private var blockedWorkoutIds: Set<String> = []
+    private var blockedUserIds: Set<String> = []
+
     lazy var leftButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 44 * Constraint.xCoeff, height: 44 * Constraint.yCoeff))
         view.setImage(UIImage(named: "backArrow"), for: .normal)
@@ -334,16 +337,16 @@ class HardWorkoutViewController: UIViewController {
 
     func blockUserWithId() {
         guard let userId = UserDefaults.standard.value(forKey: "userId") else { return }
-        //        guard let workoutUserID = UserDefaults.standard.value(forKey: "id") else {return }
+        guard let workoutUserID = UserDefaults.standard.value(forKey: "id") else {return }
 
-        let url = "https://betus-orange-nika-46706b42b39b.herokuapp.com/api/v1/users/report?blocker_id=\(userId)&blocked_id=a9c0cb33-ab46-4faf-92fa-4888fcb79344"
+        let url = "https://be-sport.org/api/v1/users/report?blocker_id=\(userId)&blocked_id=\(workoutUserID)"
 
         NetworkManager.shared.showProgressHud(true, animated: true)
-        NetworkManager.shared.post(url: url, parameters: nil, headers: nil) { [weak self] (result: Result<[Workouts]>) in
+        NetworkManager.shared.post(url: url, parameters: nil, headers: nil) { [weak self] (result: Result<[BlockedWorkouts]>) in
             NetworkManager.shared.showProgressHud(false, animated: false)
             switch result {
             case .success(let blockedId):
-                self?.blockedUserId = blockedId
+                
                 NotificationCenter.default.post(
                     name: NSNotification.Name(
                         "blockUserId.view.observer"
@@ -367,14 +370,13 @@ class HardWorkoutViewController: UIViewController {
         guard let userId = UserDefaults.standard.value(forKey: "userId") else { return }
         guard let workoutUserID = workoutData?.id else { return }
 
-        let url = "https://betus-orange-nika-46706b42b39b.herokuapp.com/api/v1/workouts/report?user_id=\(userId)&workout_id=\(workoutUserID)"
+        let url = "https://be-sport.org/api/v1/workouts/report?user_id=\(userId)&workout_id=\(workoutUserID)"
 
         NetworkManager.shared.showProgressHud(true, animated: true)
-        NetworkManager.shared.post(url: url, parameters: nil, headers: nil) { [weak self] (result: Result<[Workouts]>) in
+        NetworkManager.shared.post(url: url, parameters: nil, headers: nil) { [weak self] (result: Result<BlockedWorkouts>) in
             NetworkManager.shared.showProgressHud(false, animated: false)
             switch result {
             case .success(let blockedWorkouts):
-                self?.blockedPost = blockedWorkouts
                 NotificationCenter.default.post(
                     name: NSNotification.Name(
                         "blockPost.view.observer"
@@ -403,11 +405,31 @@ extension HardWorkoutViewController: WarningViewDelegate {
     }
 
     func didPressDontWantToSeeUserAccountButton() {
-        blockUserWithId()
+        let alert = UIAlertController(
+            title: nil,
+            message: "Do you want to block this User?",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
+            self?.blockUserWithId()
+        }))
+
+        present(alert, animated: true, completion: nil)
     }
 
     func didPressSheWillFileAComlaintButton() {
-        blockWorkoutWithId()
+        let alert = UIAlertController(
+            title: nil,
+            message: "Do you want to block this Workout?",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
+            self?.blockWorkoutWithId()
+        }))
+
+        present(alert, animated: true, completion: nil)
     }
 
     func didPressCancelButton() {
