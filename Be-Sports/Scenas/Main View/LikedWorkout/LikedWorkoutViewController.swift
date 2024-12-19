@@ -285,17 +285,21 @@ class LikedWorkoutViewController: UIViewController {
                     ),
                     object: nil
                 )
+//                DispatchQueue.main.async {
+//                    self?.collectionView.reloadData()
+//                    self?.infoLabel.isHidden = !self!.likedWorkouts.isEmpty
+//                }
                 DispatchQueue.main.async {
+                    if self?.likedWorkouts.isEmpty == true {
+                        self?.infoLabel.isHidden = false
+                    } else {
+                        self?.infoLabel.isHidden = true
+                    }
                     self?.collectionView.reloadData()
-                    self?.infoLabel.isHidden = !self!.likedWorkouts.isEmpty
                 }
                 print("like successed")
             case .failure(let error):
                 print("Error updating like: \(error)")
-                DispatchQueue.main.async {
-                    //                    self.isLiked.toggle()
-                    //                    self.updateLikeState()
-                }
             }
         }
     }

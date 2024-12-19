@@ -426,7 +426,22 @@ extension HardWorkoutViewController: WarningViewDelegate {
         )
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
-            self?.blockWorkoutWithId()
+            guard let self = self, var workout = self.workoutData else { return }
+            // Call blockWorkoutWithId to handle the API logic
+            self.blockWorkoutWithId()
+
+            // Create a new copy of the workout with updated like state
+            let updatedWorkout = workout.copyWith(isSelected: false, likeCount: max(workout.likeCount - 1, 0))
+
+            // Reflect the updated state in the UI
+            self.workoutData = updatedWorkout
+            self.updateLikeState(isSelected: updatedWorkout.isSelected)
+
+            // Notify other view controllers (e.g., LikedWorkoutViewController)
+            NotificationCenter.default.post(
+                name: NSNotification.Name("unLikeWorkout.view.observer"),
+                object: nil
+            )
         }))
 
         present(alert, animated: true, completion: nil)
@@ -435,6 +450,14 @@ extension HardWorkoutViewController: WarningViewDelegate {
     func didPressCancelButton() {
         darkOverlay.isHidden = true
         warningView.isHidden = true
+    }
+
+    private func updateLikeState(isSelected: Bool) {
+        let currentLikes = Int(likeViewButton.title(for: .normal) ?? "0") ?? 0
+        if currentLikes > 0 {
+            likeViewButton.setTitle("\(currentLikes - 1)", for: .normal)
+            likeViewButton.setImage(UIImage(named: "heart")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
+        }
     }
 }
 

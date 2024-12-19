@@ -162,15 +162,12 @@ class WorkoutViewController: UIViewController {
                 print("like successed")
             case .failure(let error):
                 print("Error updating like: \(error)")
-                DispatchQueue.main.async {
-                    //                    self.updateLikeState()
-                }
             }
         }
     }
 
     @objc private func pressTapObserver() {
-        displayedWorkouts = []
+        self.displayedWorkouts.removeAll()
         fetchWorkoutCurrentUserInfo()
     }
 
@@ -184,14 +181,12 @@ class WorkoutViewController: UIViewController {
         self.allWorkouts.removeAll()
         self.displayedWorkouts.removeAll()
         fetchWorkoutCurrentUserInfo()
-        print("....id....")
     }
 
     @objc private func didTapBlockPost() {
         self.allWorkouts.removeAll()
         self.displayedWorkouts.removeAll()
         fetchWorkoutCurrentUserInfo()
-        print("....post....")
     }
 }
 
@@ -267,23 +262,17 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
         let selectedLevel = workout.level.rawValue
         cell.configure(with: workout, selectedLevel: selectedLevel)
 
-        // Handle like button action
         cell.didTapOnLikeButton = { [weak self] in
             guard let self = self else { return }
 
-            // Track the tapped workout
             if cell.isLiked {
-                // Update state to simulate a like
                 self.displayedWorkouts[indexPath.row] = self.displayedWorkouts[indexPath.row].copyWith(isSelected: true, likeCount: workout.likeCount + 1)
             } else {
-                // Update state to simulate an unlike
                 self.displayedWorkouts[indexPath.row] = self.displayedWorkouts[indexPath.row].copyWith(isSelected: false, likeCount: workout.likeCount - 1)
             }
 
-            // Reload the specific cell
             self.collectionView.reloadItems(at: [indexPath])
 
-            // Optionally, send the updated state to the backend
             self.postLikeState(userId: workout.userId ?? "", workoutId: workout.id)
         }
         return cell

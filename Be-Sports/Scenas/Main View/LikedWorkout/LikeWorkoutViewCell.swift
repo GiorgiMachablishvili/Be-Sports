@@ -88,18 +88,15 @@ class LikeWorkoutViewCell: UICollectionViewCell {
     }
 
     @objc func likeViewButtonTapped() {
-        let currentLikes = Int(likeViewButton.title(for: .normal) ?? "0") ?? 0
-        if currentLikes > 0 {
-            likeViewButton.setTitle("\(currentLikes - 1)", for: .normal)
-            likeViewButton.setImage(UIImage(named: "heart")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
-        }
+        updateLikeState()
         didTapOnLikeButton?()
     }
     
     private func updateLikeState() {
-        likeViewButton.setImage(UIImage(named: "heartFilled")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
-        if let likes = Int(likeViewButton.title(for: .normal) ?? "0") {
-            likeViewButton.setTitle("\(likes + 1)", for: .normal)
+        let currentLikes = Int(likeViewButton.title(for: .normal) ?? "0") ?? 0
+        if currentLikes > 0 {
+            likeViewButton.setTitle("\(currentLikes - 1)", for: .normal)
+            likeViewButton.setImage(UIImage(named: "heart")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
         }
     }
 
@@ -108,7 +105,6 @@ class LikeWorkoutViewCell: UICollectionViewCell {
         workoutInfoView.taskView.taskNumberLabel.text = String(data.taskCount)
         workoutInfoView.timeView.remainingTime = Double(data.time)
         workoutInfoView.levelView.levelInfoLabel.text = data.level.rawValue
-//        likeViewButton.setTitle("\(data.completers.count)", for: .normal)
         likeViewButton.setTitle("\(data.likeCount)", for: .normal)
 
         let buttonImage = data.isSelected ? "heartFilled" : "heart"
