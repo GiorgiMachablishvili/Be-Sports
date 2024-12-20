@@ -242,7 +242,7 @@ class LikedWorkoutViewController: UIViewController {
         //        guard let userId = UserDefaults.standard.value(forKey: "userId") else { return }
         let url = "https://be-sport.org/api/v1/workouts"
 
-
+        let isGuestUser = UserDefaults.standard.bool(forKey: "isGuestUser")
         NetworkManager.shared.get(url: url, parameters: nil, headers: nil) { [weak self] (result: Result<[Workouts]>) in
             switch result {
             case .success(let workouts):
@@ -252,20 +252,18 @@ class LikedWorkoutViewController: UIViewController {
                         self?.likeWorkoutCell.workoutImageLikeView.isHidden = true
                         self?.likeWorkoutCell.workoutInfoView.isHidden = true
                         self?.likeWorkoutCell.likeViewButton.isHidden = true
-                        self?.infoLabel.isHidden = false
                     } else {
                         self?.likeWorkoutCell.workoutImageLikeView.isHidden = false
                         self?.likeWorkoutCell.workoutInfoView.isHidden = false
                         self?.likeWorkoutCell.likeViewButton.isHidden = false
-                        self?.infoLabel.isHidden = true
                     }
+                    self?.infoLabel.isHidden = !(likedWorkouts.isEmpty && !isGuestUser)
                     self?.likedWorkouts = likedWorkouts
                     self?.collectionView.reloadData()
                 }
             case .failure(let error):
                 print("Error fetching liked workouts: \(error.localizedDescription)")
                 DispatchQueue.main.async { [weak self] in
-                    self?.infoLabel.isHidden = false
                     self?.collectionView.isHidden = true
                 }
             }
@@ -274,6 +272,7 @@ class LikedWorkoutViewController: UIViewController {
 
     private func postLikeState(userId: String, workoutId: String) {
         let url = "https://be-sport.org/api/v1/workouts/selected?user_id=\(userId)&workout_id=\(workoutId)"
+        let isGuestUser = UserDefaults.standard.bool(forKey: "isGuestUser")
 
         NetworkManager.shared.post(url: url, parameters: nil, headers: nil) { [weak self] (result: Result<[Workouts]>) in
             switch result {
@@ -285,16 +284,9 @@ class LikedWorkoutViewController: UIViewController {
                     ),
                     object: nil
                 )
-//                DispatchQueue.main.async {
-//                    self?.collectionView.reloadData()
-//                    self?.infoLabel.isHidden = !self!.likedWorkouts.isEmpty
-//                }
                 DispatchQueue.main.async {
-                    if self?.likedWorkouts.isEmpty == true {
-                        self?.infoLabel.isHidden = false
-                    } else {
-                        self?.infoLabel.isHidden = true
-                    }
+                    self?.infoLabel.isHidden = !(self!.likedWorkouts.isEmpty && !isGuestUser)
+
                     self?.collectionView.reloadData()
                 }
                 print("like successed")
