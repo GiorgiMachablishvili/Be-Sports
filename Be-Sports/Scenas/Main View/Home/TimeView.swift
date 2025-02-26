@@ -21,7 +21,7 @@ class TimeView: UIView {
     private lazy var timeLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.text = "Time"
-        view.textColor = UIColor(hexString: "#FFFFFF66")
+        view.textColor = UIColor.redColor
         view.textAlignment = .center
         view.font = UIFont.latoRegular(size: 14)
         return view

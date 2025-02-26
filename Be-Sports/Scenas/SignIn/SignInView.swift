@@ -61,13 +61,44 @@ class SignInView: UIViewController {
         return view
     }()
 
-    private lazy var termsAndPrivacyPolicyButton: UIButton = {
+    private lazy var termsButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Terms and Privacy Policy!", for: .normal)
+        view.setTitle("Terms", for: .normal)
         view.setTitleColor(UIColor(hexString: "FFFFFF").withAlphaComponent(0.4), for: .normal)
         view.titleLabel?.font = UIFont.latoRegular(size: 10)
         view.backgroundColor = .clear
-        view.addTarget(self, action: #selector(clickTermsAndPrivacyPolicyButton), for: .touchUpInside)
+        view.addTarget(self, action: #selector(clickTermsButton), for: .touchUpInside)
+        return view
+    }()
+
+    private lazy var termsLine: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.backgroundColor = UIColor(hexString: "FFFFFF").withAlphaComponent(0.4)
+        return view
+    }()
+
+    private lazy var andLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.text = "and"
+        view.textColor = UIColor(hexString: "FFFFFF").withAlphaComponent(0.4)
+        view.font = UIFont.latoRegular(size: 10)
+        view.textAlignment = .center
+        return view
+    }()
+
+    private lazy var privacyPolicyButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Privacy Policy", for: .normal)
+        view.setTitleColor(UIColor(hexString: "FFFFFF").withAlphaComponent(0.4), for: .normal)
+        view.titleLabel?.font = UIFont.latoRegular(size: 10)
+        view.backgroundColor = .clear
+        view.addTarget(self, action: #selector(clickPrivacyPolicyButton), for: .touchUpInside)
+        return view
+    }()
+
+    private lazy var privacyLine: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.backgroundColor = UIColor(hexString: "FFFFFF").withAlphaComponent(0.4)
         return view
     }()
 
@@ -77,6 +108,7 @@ class SignInView: UIViewController {
         setup()
         setupConstraints()
         view.backgroundColor = UIColor.init(hexString: "101538")
+//        view.backgroundColor = UIColor(hexString: "#170C0C")
         view.applyGradientBackground()
     }
 
@@ -85,7 +117,13 @@ class SignInView: UIViewController {
         view.addSubview(singInInfoLabel)
         view.addSubview(signInWithAppleButton)
         view.addSubview(logInAsGuestButton)
-        view.addSubview(termsAndPrivacyPolicyButton)
+        view.addSubview(termsButton)
+        view.addSubview(andLabel)
+        view.addSubview(privacyPolicyButton)
+        view.addSubview(termsLine)
+        view.addSubview(privacyLine)
+
+
     }
 
     private func setupConstraints() {
@@ -112,16 +150,50 @@ class SignInView: UIViewController {
             make.height.equalTo(59 * Constraint.yCoeff)
         }
 
-        termsAndPrivacyPolicyButton.snp.remakeConstraints { make in
-            make.centerX.equalTo(view.snp.centerX)
+        termsButton.snp.remakeConstraints { make in
+            make.leading.equalTo(view.snp.leading).offset(134 * Constraint.xCoeff)
             make.top.equalTo(logInAsGuestButton.snp.bottom).offset(12 * Constraint.yCoeff)
-            make.width.equalTo(143 * Constraint.xCoeff)
+            make.width.equalTo(30 * Constraint.xCoeff)
             make.height.equalTo(12 * Constraint.yCoeff)
+        }
+
+        termsLine.snp.remakeConstraints { make in
+            make.top.equalTo(termsButton.snp.bottom).offset(2 * Constraint.xCoeff)
+            make.leading.equalTo(view.snp.leading).offset(134 * Constraint.xCoeff)
+            make.width.equalTo(30 * Constraint.xCoeff)
+            make.height.equalTo(1 * Constraint.yCoeff)
+        }
+
+        andLabel.snp.remakeConstraints { make in
+            make.leading.equalTo(termsButton.snp.trailing).offset(5  * Constraint.xCoeff)
+            make.top.equalTo(logInAsGuestButton.snp.bottom).offset(12 * Constraint.yCoeff)
+            make.width.equalTo(25 * Constraint.xCoeff)
+            make.height.equalTo(12 * Constraint.yCoeff)
+        }
+
+        privacyPolicyButton.snp.remakeConstraints { make in
+            make.leading.equalTo(andLabel.snp.trailing).offset(5 * Constraint.xCoeff)
+            make.top.equalTo(logInAsGuestButton.snp.bottom).offset(12 * Constraint.yCoeff)
+            make.width.equalTo(65 * Constraint.xCoeff)
+            make.height.equalTo(12 * Constraint.yCoeff)
+        }
+
+        privacyLine.snp.remakeConstraints { make in
+            make.top.equalTo(privacyPolicyButton.snp.bottom).offset(2)
+            make.leading.equalTo(andLabel.snp.trailing).offset(5 * Constraint.xCoeff)
+            make.width.equalTo(65 * Constraint.xCoeff)
+            make.height.equalTo(1 * Constraint.yCoeff)
         }
     }
 
-    @objc func clickTermsAndPrivacyPolicyButton() {
+    @objc func clickTermsButton() {
         let termsURL = "https://be-sport.org/terms"
+        let webViewController = WebViewController(urlString: termsURL)
+        navigationController?.present(webViewController, animated: true)
+    }
+
+    @objc func clickPrivacyPolicyButton() {
+        let termsURL = "https://be-sport.org/privacy"
         let webViewController = WebViewController(urlString: termsURL)
         navigationController?.present(webViewController, animated: true)
     }
@@ -131,7 +203,7 @@ class SignInView: UIViewController {
         UserDefaults.standard.setValue(true, forKey: "isGuestUser")
 
         UserDefaults.standard.removeObject(forKey: "userId")
-        //        UserDefaults.standard.removeObject(forKey: "AccountCredential")
+        UserDefaults.standard.removeObject(forKey: "AccountCredential")
 
         let mainVC = MainViewControllerTab()
         navigationController?.isNavigationBarHidden = true
@@ -224,7 +296,7 @@ extension SignInView: ASAuthorizationControllerDelegate {
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("Authorization failed: \(error.localizedDescription)")
-        showAlert(title: "Sign In Failed", description: error.localizedDescription)
+//        showAlert(title: "Sign In Failed", description: error.localizedDescription)
     }
 
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {

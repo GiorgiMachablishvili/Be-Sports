@@ -136,7 +136,7 @@ class HomeHeaderView: UICollectionReusableView {
         super.init(frame: frame)
         setup()
         setupConstraints()
-        allWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        allWorkoutLevelsButton.backgroundColor = UIColor.redColor
     }
 
     required init?(coder: NSCoder) {
@@ -218,25 +218,25 @@ class HomeHeaderView: UICollectionReusableView {
 
     @objc private func clickAllWorkoutButton() {
         resetButtonImages()
-        allWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        allWorkoutLevelsButton.backgroundColor = UIColor.redColor
         delegate?.filterWorkouts(by: .all)
     }
 
     @objc private func clickEasyWorkoutButton() {
         resetButtonImages()
-        easyWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        easyWorkoutLevelsButton.backgroundColor = UIColor.redColor
         delegate?.filterWorkouts(by: .easy)
     }
 
     @objc private func clickAdvancedButton() {
         resetButtonImages()
-        advancedWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        advancedWorkoutLevelsButton.backgroundColor = UIColor.redColor
         delegate?.filterWorkouts(by: .advance)
     }
 
     @objc private func clickDifficultButton() {
         resetButtonImages()
-        difficultWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        difficultWorkoutLevelsButton.backgroundColor = UIColor.redColor
         delegate?.filterWorkouts(by: .difficult)
     }
 

@@ -15,7 +15,7 @@ class CircularProgressView: UIView {
     var trackColor: UIColor = UIColor(hexString: "FFFFFF") {
         didSet { trackLayer.strokeColor = trackColor.cgColor }
     }
-    var progressColor: UIColor = UIColor(hexString: "#E5D820") {
+    var progressColor: UIColor = UIColor.redColor {
         didSet { progressLayer.strokeColor = progressColor.cgColor }
     }
 
@@ -30,19 +30,19 @@ class CircularProgressView: UIView {
     }
 
     private func setupLayers() {
-        let circularPath = UIBezierPath(ovalIn: bounds.insetBy(dx: 10, dy: 10))
+        let circularPath = UIBezierPath(ovalIn: bounds.insetBy(dx: 10 * Constraint.xCoeff, dy: 10 * Constraint.yCoeff))
 
         trackLayer.path = circularPath.cgPath
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.strokeColor = trackColor.cgColor
-        trackLayer.lineWidth = 10
+        trackLayer.lineWidth = 10 * Constraint.xCoeff
         trackLayer.lineCap = .round
         layer.addSublayer(trackLayer)
 
         progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
-        progressLayer.lineWidth = 10
+        progressLayer.lineWidth = 10 * Constraint.xCoeff
         progressLayer.strokeEnd = 1.0
         progressLayer.lineCap = .round
         layer.addSublayer(progressLayer)

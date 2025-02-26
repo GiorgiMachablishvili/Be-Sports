@@ -69,6 +69,7 @@
 		E3B7E30B2CF876FC00ABCDC4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B7E30A2CF876FC00ABCDC4 /* UserInfo.swift */; };
 		E3B8DCAB2D078BCD005A8B19 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DCAA2D078BCD005A8B19 /* Task.swift */; };
 		E3CDA0392D0A1822006D513E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E3CDA0382D0A1822006D513E /* Kingfisher */; };
+		E3E8CD4D2D6F293E005B0FD2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E8CD4C2D6F293E005B0FD2 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,7 @@
 		E3B785D02CF9A89800A0492A /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		E3B7E30A2CF876FC00ABCDC4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		E3B8DCAA2D078BCD005A8B19 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E3E8CD4C2D6F293E005B0FD2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +277,7 @@
 				E39C84132CF4B4B5003177BF /* UiColorGradiation+Exttention.swift */,
 				E3667EF32CF5052D00D1AE68 /* BlurBackground+Extention.swift */,
 				E32C49F72CF5FDE500C650B3 /* UIImage+Extention.swift */,
+				E3E8CD4C2D6F293E005B0FD2 /* Colors.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3667EF42CF5052D00D1AE68 /* BlurBackground+Extention.swift in Sources */,
+				E3E8CD4D2D6F293E005B0FD2 /* Colors.swift in Sources */,
 				E3667EEC2CF4F36500D1AE68 /* WorkoutInfoView.swift in Sources */,
 				E39C83DD2CF4A573003177BF /* SignInView.swift in Sources */,
 				E36E2F582CFE57E800613FBD /* WorkoutInfo.swift in Sources */,
@@ -650,11 +654,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Be-Sports/Be-Sports.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = D88SLNJTY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Be-Sports/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Be-Sports";
+				INFOPLIST_KEY_CFBundleDisplayName = "BV Sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -664,7 +668,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.buss.workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -684,11 +688,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Be-Sports/Be-Sports.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.8;
 				DEVELOPMENT_TEAM = D88SLNJTY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Be-Sports/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Be-Sports";
+				INFOPLIST_KEY_CFBundleDisplayName = "BV Sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -698,7 +702,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.buss.workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -23,7 +23,7 @@ class WorkoutViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.width - 24 * Constraint.xCoeff, height: 287 * Constraint.yCoeff)
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 10  * Constraint.xCoeff
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: 120 * Constraint.yCoeff)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10 * Constraint.yCoeff, right: 0)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -38,7 +38,7 @@ class WorkoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hexString: "#101538")
+        view.backgroundColor = UIColor.blackBackgroundColor
         view.applyGradientBackground()
         setup()
         setupConstraints()
@@ -147,7 +147,7 @@ class WorkoutViewController: UIViewController {
             case .success(let response):
                 guard let selectedLevel = self?.selectedLevel else { return }
                 self?.displayedWorkouts = response
-//                self?.allWorkouts = response
+                self?.allWorkouts = response
 
                 self?.filterWorkouts(by: selectedLevel)
                 NotificationCenter.default.post(
@@ -261,28 +261,10 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
         let workout = displayedWorkouts[indexPath.row]
         let selectedLevel = workout.level.rawValue
         cell.configure(with: workout, selectedLevel: selectedLevel)
-
-        cell.didTapOnLikeButton = { [weak self] in
-            guard let self = self else { return }
-
-            if cell.isLiked {
-                self.displayedWorkouts[indexPath.row] = self.displayedWorkouts[indexPath.row].copyWith(isSelected: true, likeCount: workout.likeCount + 1)
-            } else {
-                self.displayedWorkouts[indexPath.row] = self.displayedWorkouts[indexPath.row].copyWith(isSelected: false, likeCount: workout.likeCount - 1)
-            }
-
-            self.collectionView.reloadItems(at: [indexPath])
-
-            self.postLikeState(userId: workout.userId ?? "", workoutId: workout.id)
+        cell.didTapOnLikeButton = { [weak self]  in
+            self?.postLikeState(userId: workout.userId ?? "", workoutId: workout.id)
         }
         return cell
-        //        let workout = displayedWorkouts[indexPath.row]
-        //        let selectedLevel = workout.level.rawValue
-        //        cell.configure(with: workout, selectedLevel: selectedLevel)
-        //        cell.didTapOnLikeButton = { [weak self]  in
-        //            self?.postLikeState(userId: workout.userId ?? "", workoutId: workout.id)
-        //        }
-        //        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -310,23 +292,5 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
         hardWorkoutVC.likeViewButton.setTitle(likeNumber, for: .normal)
         hardWorkoutVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(hardWorkoutVC, animated: true)
-    }
-}
-
-extension Workouts {
-    func copyWith(isSelected: Bool, likeCount: Int) -> Workouts {
-        return Workouts(
-            taskName: self.taskName,
-            taskCount: self.taskCount,
-            level: self.level,
-            completers: self.completers,
-            details: self.details,
-            id: self.id,
-            image: self.image,
-            userId: self.userId,
-            isSelected: isSelected,
-            likeCount: likeCount,
-            tasks: self.tasks
-        )
     }
 }

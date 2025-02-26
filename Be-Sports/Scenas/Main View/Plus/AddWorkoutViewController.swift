@@ -28,8 +28,7 @@ class AddWorkoutViewController: UIViewController, ImageViewDelegate {
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
-        view.backgroundColor = UIColor(hexString: "#101538")
-        //        view.allowsSelection = false
+        view.backgroundColor = UIColor.blackBackgroundColor
         return view
     }()
 
@@ -49,7 +48,7 @@ class AddWorkoutViewController: UIViewController, ImageViewDelegate {
     lazy var rightButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 44 * Constraint.xCoeff, height: 44 * Constraint.yCoeff))
         view.setImage(UIImage(named: "arrow-left-1"), for: .normal)
-        view.backgroundColor = UIColor(hexString: "#E5D820")
+        view.backgroundColor = UIColor.redColor
         view.layer.cornerRadius = 22
         view.clipsToBounds = true
         view.imageView?.contentMode = .scaleAspectFit
@@ -88,7 +87,7 @@ class AddWorkoutViewController: UIViewController, ImageViewDelegate {
         setupConstraint()
         setupHierarchy()
         configureCompositionLayout()
-        view.backgroundColor = UIColor(hexString: "#101538")
+        view.backgroundColor = UIColor.blackBackgroundColor
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)

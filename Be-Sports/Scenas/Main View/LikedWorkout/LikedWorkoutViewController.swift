@@ -141,7 +141,7 @@ class LikedWorkoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hexString: "#101538")
+        view.backgroundColor = UIColor.blackBackgroundColor
         view.applyGradientBackground()
         setup()
         setupConstraints()
@@ -285,9 +285,13 @@ class LikedWorkoutViewController: UIViewController {
                     object: nil
                 )
                 DispatchQueue.main.async {
+<<<<<<< Updated upstream
                     self?.infoLabel.isHidden = !(self!.likedWorkouts.isEmpty && !isGuestUser)
 
+=======
+>>>>>>> Stashed changes
                     self?.collectionView.reloadData()
+                    self?.infoLabel.isHidden = !self!.likedWorkouts.isEmpty
                 }
                 print("like successed")
             case .failure(let error):

@@ -25,17 +25,17 @@ class ProfileViewController: UIViewController {
         return view
     }()
     
-    private lazy var userDeleteButton: UIButton = {
-        let view = UIButton(frame: CGRect(x: 0, y: 0, width: 44 * Constraint.xCoeff, height: 44 * Constraint.yCoeff))
-        view.setImage(UIImage(named: "profileDelete"), for: .normal)
-        view.backgroundColor = UIColor.clearBlur(withAlpha: 0.1)
-        view.layer.cornerRadius = 22
-        view.clipsToBounds = true
-        view.imageView?.contentMode = .scaleAspectFit
-        view.setImage(UIImage(named: "userProfile")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
-        return view
-    }()
-    
+//    private lazy var userDeleteButton: UIButton = {
+//        let view = UIButton(frame: CGRect(x: 0, y: 0, width: 44 * Constraint.xCoeff, height: 44 * Constraint.yCoeff))
+//        view.setImage(UIImage(named: "profileDelete"), for: .normal)
+//        view.backgroundColor = UIColor.clearBlur(withAlpha: 0.1)
+//        view.layer.cornerRadius = 22
+//        view.clipsToBounds = true
+//        view.imageView?.contentMode = .scaleAspectFit
+//        view.setImage(UIImage(named: "userProfile")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
+//        return view
+//    }()
+//    
     private lazy var termsOfUseButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 366 * Constraint.xCoeff, height: 59 * Constraint.yCoeff))
         view.setTitle("Terms of use", for: .normal)
@@ -122,7 +122,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hexString: "#101538")
+        view.backgroundColor = UIColor.blackBackgroundColor
         view.applyGradientBackground()
         setup()
         setupConstraints()
@@ -134,7 +134,7 @@ class ProfileViewController: UIViewController {
     
     private func setup() {
         view.addSubview(leftButton)
-        view.addSubview(userDeleteButton)
+//        view.addSubview(userDeleteButton)
         view.addSubview(termsOfUseButton)
         view.addSubview(privacyPolicyButton)
         view.addSubview(supportButton)
@@ -150,14 +150,14 @@ class ProfileViewController: UIViewController {
             make.width.height.equalTo(44 * Constraint.xCoeff)
         }
         
-        userDeleteButton.snp.remakeConstraints { make in
-            make.top.equalTo(view.snp.top).offset(80 * Constraint.yCoeff)
-            make.trailing.equalTo(view.snp.trailing).offset(-20 * Constraint.xCoeff)
-            make.width.height.equalTo(44 * Constraint.xCoeff)
-        }
+//        userDeleteButton.snp.remakeConstraints { make in
+//            make.top.equalTo(view.snp.top).offset(80 * Constraint.yCoeff)
+//            make.trailing.equalTo(view.snp.trailing).offset(-20 * Constraint.xCoeff)
+//            make.width.height.equalTo(44 * Constraint.xCoeff)
+//        }
         
         termsOfUseButton.snp.remakeConstraints { make in
-            make.top.equalTo(userDeleteButton.snp.bottom).offset(185 * Constraint.yCoeff)
+            make.top.equalTo(leftButton.snp.bottom).offset(185 * Constraint.yCoeff)
             make.leading.trailing.equalToSuperview().inset(12 * Constraint.xCoeff)
             make.height.equalTo(59 * Constraint.yCoeff)
         }
@@ -197,7 +197,6 @@ class ProfileViewController: UIViewController {
         let isGuestUser = UserDefaults.standard.bool(forKey: "isGuestUser")
         deleteAccountButton.isHidden = isGuestUser
         signInWithAppleButton.isHidden = !isGuestUser
-        
     }
     
     @objc private func pressLeftButton() {

@@ -70,7 +70,9 @@ class LikeWorkoutViewCell: UICollectionViewCell {
 
     private func setupConstraints() {
         workoutImageLikeView.snp.remakeConstraints { make in
-            make.edges.equalToSuperview()
+            make.centerX.equalTo(snp.centerX)
+            make.height.equalTo(236 * Constraint.xCoeff)
+            make.width.equalTo(366 * Constraint.xCoeff)
         }
 
         workoutInfoView.snp.remakeConstraints { make in

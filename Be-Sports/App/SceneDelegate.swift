@@ -16,9 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: windowScene)
 //                ifUserISCreatedOrNot()
-//        let mainViewController = SignInView()
-//        window?.rootViewController = UINavigationController(rootViewController: mainViewController)
-        setupInitialRootViewController()
+        let mainViewController = SignInView()
+        window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+//        setupInitialRootViewController()
         window?.makeKeyAndVisible()
     }
 //        guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -29,16 +29,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        self.window = window
 //    }
 
-    func ifUserISCreatedOrNot() {
-        if let userId = UserDefaults.standard.string(forKey: "userId"), !userId.isEmpty {
-            let mainViewController = MainViewControllerTab()
-            UserDefaults.standard.setValue(false, forKey: "isGuestUser")
-            window?.rootViewController = UINavigationController(rootViewController: mainViewController)
-        } else {
-            let signInViewController = SignInView()
-            window?.rootViewController = UINavigationController(rootViewController: signInViewController)
-        }
-    }
+//    func ifUserISCreatedOrNot() {
+//        if let userId = UserDefaults.standard.string(forKey: "userId"), !userId.isEmpty {
+//            let mainViewController = MainViewControllerTab()
+//            UserDefaults.standard.setValue(false, forKey: "isGuestUser")
+//            window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+//        } else {
+//            let signInViewController = SignInView()
+//            window?.rootViewController = UINavigationController(rootViewController: signInViewController)
+//        }
+//    }
 
     private func setupInitialRootViewController() {
         if let userId = UserDefaults.standard.string(forKey: "userId"), !userId.isEmpty {
@@ -70,10 +70,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

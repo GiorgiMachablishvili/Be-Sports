@@ -40,7 +40,7 @@ class AddTaskView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             .font: UIFont.latoRegular(size: 14)
         ]
         view.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20 * Constraint.xCoeff, height: 1))
         view.leftView = paddingView
         view.leftViewMode = .always
         return view
@@ -69,7 +69,7 @@ class AddTaskView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         view.sizeToFit()
         view.barStyle = .default
         view.tintColor = UIColor(hexString: "#FFFFFF")
-        view.barTintColor = UIColor(hexString: "#101538")
+        view.barTintColor = UIColor.blackBackgroundColor
         return view
     }()
 
@@ -85,7 +85,7 @@ class AddTaskView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             .font: UIFont.latoRegular(size: 14)
         ]
         view.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20 * Constraint.xCoeff, height: 1))
         view.leftView = paddingView
         view.leftViewMode = .always
         return view
@@ -109,7 +109,7 @@ class AddTaskView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private lazy var addButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 131 * Constraint.xCoeff, height: 41 * Constraint.yCoeff))
         view.setTitle("Add", for: .normal)
-        view.backgroundColor = UIColor(hexString: "#E5D820")
+        view.backgroundColor = UIColor.redColor
         view.layer.cornerRadius = 16
         view.titleLabel?.font = UIFont.latoRegular(size: 16)
         view.setTitleColor(UIColor(hexString: "#FFFFFF"), for: .normal)
@@ -123,7 +123,7 @@ class AddTaskView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(hexString: "##101538")
+        backgroundColor = UIColor.blackBackgroundColor
         setup()
         setupConstraints()
     }

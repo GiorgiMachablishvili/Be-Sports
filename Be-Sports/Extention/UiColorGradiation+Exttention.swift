@@ -66,8 +66,8 @@ extension UIView {
     /// Applies a vertical gradient background with the specified or default colors.
         func applyGradientBackground(
             colors: [UIColor] = [
-                UIColor(red: 229/255, green: 216/255, blue: 32/255, alpha: 1),
-                UIColor(red: 10/255, green: 15/255, blue: 55/255, alpha: 1)
+                UIColor(red: 229/255, green: 0/255, blue: 0/255, alpha: 1),
+                UIColor(red: 10/255, green: 0/255, blue: 0/255, alpha: 1)
             ],
             startPoint: CGPoint = CGPoint(x: -0.25, y: -0.45),
             endPoint: CGPoint = CGPoint(x: 0.0, y: 0.4)

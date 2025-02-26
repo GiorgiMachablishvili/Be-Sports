@@ -55,14 +55,14 @@ class WorkoutTaskViewCell: UICollectionViewCell {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(taskView.snp.top).offset(20)
-            make.leading.equalTo(taskView.snp.leading).offset(20)
-            make.height.equalTo(20)
+            make.top.equalTo(taskView.snp.top).offset(20 * Constraint.yCoeff)
+            make.leading.equalTo(taskView.snp.leading).offset(20 * Constraint.xCoeff)
+            make.height.equalTo(20 * Constraint.yCoeff)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-            make.leading.equalTo(taskView.snp.leading).offset(20)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10 * Constraint.yCoeff)
+            make.leading.equalTo(taskView.snp.leading).offset(20 * Constraint.xCoeff)
         }
     }
     

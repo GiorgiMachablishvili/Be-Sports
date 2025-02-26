@@ -16,7 +16,7 @@ class WebViewController: UIViewController {
     private lazy var closeButton: UIButton = {
         let view = UIButton(frame: .zero)
         view.setImage(UIImage(named: "xButton"), for: .normal)
-        view.backgroundColor = .blue
+        view.backgroundColor = .blackBackgroundColor
         view.layer.cornerRadius = 22
         view.addTarget(self, action: #selector(pressCloseButton), for: .touchUpInside)
         return view

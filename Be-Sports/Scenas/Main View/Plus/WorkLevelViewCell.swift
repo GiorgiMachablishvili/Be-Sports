@@ -57,7 +57,7 @@ class WorkLevelViewCell: UICollectionViewCell {
         setup()
         setupConstraint()
 
-        easyWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        easyWorkoutLevelsButton.backgroundColor = UIColor.redColor
 
     }
 
@@ -74,7 +74,7 @@ class WorkLevelViewCell: UICollectionViewCell {
     func setupConstraint() {
         easyWorkoutLevelsButton.snp.remakeConstraints { make in
             make.centerY.equalTo(advancedWorkoutLevelsButton.snp.centerY)
-            make.trailing.equalTo(advancedWorkoutLevelsButton.snp.leading).offset(-8)
+            make.trailing.equalTo(advancedWorkoutLevelsButton.snp.leading).offset(-8 * Constraint.xCoeff)
             make.width.equalTo(115 * Constraint.xCoeff)
             make.height.equalTo(41 * Constraint.yCoeff)
         }
@@ -88,7 +88,7 @@ class WorkLevelViewCell: UICollectionViewCell {
 
         difficultWorkoutLevelsButton.snp.remakeConstraints { make in
             make.centerY.equalTo(advancedWorkoutLevelsButton.snp.centerY)
-            make.leading.equalTo(advancedWorkoutLevelsButton.snp.trailing).offset(8)
+            make.leading.equalTo(advancedWorkoutLevelsButton.snp.trailing).offset(8 * Constraint.xCoeff)
             make.width.equalTo(115 * Constraint.xCoeff)
             make.height.equalTo(41 * Constraint.yCoeff)
         }
@@ -96,17 +96,17 @@ class WorkLevelViewCell: UICollectionViewCell {
 
     @objc func pressEasyLevelWorkoutButton() {
         resetButtonImages()
-        easyWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        easyWorkoutLevelsButton.backgroundColor = UIColor.redColor
     }
 
     @objc func pressAdvanceLevelWorkoutButton() {
         resetButtonImages()
-        advancedWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        advancedWorkoutLevelsButton.backgroundColor = UIColor.redColor
     }
 
     @objc func pressDifficultLevelWorkoutButton() {
         resetButtonImages()
-        difficultWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        difficultWorkoutLevelsButton.backgroundColor = UIColor.redColor
     }
 
     private func resetButtonImages() {
@@ -116,11 +116,11 @@ class WorkLevelViewCell: UICollectionViewCell {
     }
 
     func getSelectedLevel() -> String {
-        if easyWorkoutLevelsButton.backgroundColor == UIColor(hexString: "E5D820") {
+        if easyWorkoutLevelsButton.backgroundColor == UIColor.redColor {
             return "Easy"
-        } else if advancedWorkoutLevelsButton.backgroundColor == UIColor(hexString: "E5D820") {
+        } else if advancedWorkoutLevelsButton.backgroundColor == UIColor.redColor {
             return "Advance"
-        } else if difficultWorkoutLevelsButton.backgroundColor == UIColor(hexString: "E5D820") {
+        } else if difficultWorkoutLevelsButton.backgroundColor == UIColor.redColor {
             return "Difficult"
         } else {
             return "Unknown"
@@ -129,6 +129,6 @@ class WorkLevelViewCell: UICollectionViewCell {
 
     func resetLevelSelection() {
         resetButtonImages()
-        easyWorkoutLevelsButton.backgroundColor = UIColor(hexString: "E5D820")
+        easyWorkoutLevelsButton.backgroundColor = UIColor.redColor
     }
 }

@@ -78,7 +78,7 @@ class WarningView: UIView {
     private lazy var cancelButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 216 * Constraint.xCoeff, height: 44 * Constraint.yCoeff))
         view.setTitle("Cancel", for: .normal)
-        view.backgroundColor = UIColor(hexString: "#E5D820")
+        view.backgroundColor = UIColor.redColor
         view.layer.cornerRadius = 22
         view.titleLabel?.font = UIFont.latoRegular(size: 14)
         view.setTitleColor(UIColor(hexString: "#FFFFFF"), for: .normal)
@@ -92,7 +92,7 @@ class WarningView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(hexString: "##101538")
+        backgroundColor = UIColor.blackBackgroundColor
         setup()
         setupConstraints()
     }

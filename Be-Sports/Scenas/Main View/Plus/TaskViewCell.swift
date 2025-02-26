@@ -80,26 +80,27 @@ class TaskViewCell: UICollectionViewCell {
         }
 
         nameLabel.snp.remakeConstraints { make in
-            make.top.equalTo(taskView.snp.top).offset(20 * Constraint.yCoeff)
+            make.top.equalTo(taskView.snp.top).offset(10 * Constraint.yCoeff)
             make.leading.trailing.equalToSuperview().inset(20 * Constraint.xCoeff)
-            make.height.equalTo(44)
+            make.height.equalTo(44 * Constraint.yCoeff)
         }
 
         timerLabel.snp.remakeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(10 * Constraint.yCoeff)
             make.leading.trailing.equalToSuperview().inset(20 * Constraint.xCoeff)
-            make.height.equalTo(24)
+            make.height.equalTo(24 * Constraint.yCoeff)
         }
 
         descriptionLabel.snp.remakeConstraints { make in
             make.top.equalTo(timerLabel.snp.bottom).offset(10 * Constraint.yCoeff)
             make.leading.trailing.equalToSuperview().inset(20 * Constraint.xCoeff)
+            make.bottom.equalTo(snp.bottom).offset(-10)
         }
 
         deleteTaskViewButton.snp.remakeConstraints { make in
             make.centerY.equalTo(nameLabel.snp.centerY)
-            make.trailing.equalTo(taskView.snp.trailing).offset(-20)
-            make.width.height.equalTo(44)
+            make.trailing.equalTo(taskView.snp.trailing).offset(-20 * Constraint.xCoeff)
+            make.width.height.equalTo(44 * Constraint.yCoeff)
         }
     }
 

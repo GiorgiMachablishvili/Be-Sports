@@ -77,7 +77,9 @@ class WorkoutInfoCell: UICollectionViewCell {
 
     private func setupConstraints() {
         workoutImage.snp.remakeConstraints { make in
-            make.edges.equalToSuperview()
+            make.centerX.equalTo(snp.centerX)
+            make.height.equalTo(236 * Constraint.xCoeff)
+            make.width.equalTo(366 * Constraint.xCoeff)
         }
 
         workoutInfoView.snp.remakeConstraints { make in
@@ -100,8 +102,8 @@ class WorkoutInfoCell: UICollectionViewCell {
     }
 
     @objc func likeViewButtonTapped() {
-        isLiked.toggle() // Toggle the local state
-        updateLikeState(isSelected: isLiked)
+//        isLiked.toggle() // Toggle the local state
+//        updateLikeState(isSelected: isLiked)
         didTapOnLikeButton?()
     }
 

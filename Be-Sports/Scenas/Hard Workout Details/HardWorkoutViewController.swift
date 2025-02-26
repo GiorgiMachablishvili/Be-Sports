@@ -89,12 +89,12 @@ class HardWorkoutViewController: UIViewController {
     private lazy var workoutDetailsYellowButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 131 * Constraint.xCoeff, height: 41 * Constraint.yCoeff))
         view.setTitle("Workout details", for: .normal)
-        view.backgroundColor = UIColor(hexString: "#E5D820")
+        view.backgroundColor = UIColor.redColor
         view.layer.cornerRadius = 16
         view.titleLabel?.font = UIFont.latoRegular(size: 16)
         view.setTitleColor(UIColor(hexString: "#1D0840"), for: .normal)
         view.clipsToBounds = true
-        view.layer.borderColor = UIColor.init(hexString: "#101538").cgColor
+        view.layer.borderColor = UIColor.blackBackgroundColor.cgColor
         view.layer.borderWidth = 6
         view.imageView?.contentMode = .scaleAspectFit
         return view
@@ -116,7 +116,7 @@ class HardWorkoutViewController: UIViewController {
         view.titleLabel?.font = UIFont.latoRegular(size: 16)
         view.setTitleColor(UIColor(hexString: "#1D0840"), for: .normal)
         view.clipsToBounds = true
-        view.layer.borderColor = UIColor.init(hexString: "#101538").cgColor
+        view.layer.borderColor = UIColor.blackBackgroundColor.cgColor
         view.layer.borderWidth = 6
         view.imageView?.contentMode = .scaleAspectFit
         return view
@@ -139,7 +139,7 @@ class HardWorkoutViewController: UIViewController {
     private lazy var startWorkoutButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 216 * Constraint.xCoeff, height: 60 * Constraint.yCoeff))
         view.setTitle("Start This Workout", for: .normal)
-        view.backgroundColor = UIColor(hexString: "##E5D820")
+        view.backgroundColor = UIColor.redColor
         view.layer.cornerRadius = 26
         view.titleLabel?.font = UIFont.latoRegular(size: 16)
         view.setTitleColor(UIColor(hexString: "#FFFFFF"), for: .normal)
@@ -168,7 +168,7 @@ class HardWorkoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hexString: "#101538")
+        view.backgroundColor = UIColor.blackBackgroundColor
 
         view.applyGradientBackground()
         setup()

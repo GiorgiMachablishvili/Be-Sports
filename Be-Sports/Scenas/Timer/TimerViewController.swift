@@ -28,7 +28,7 @@ class TimerViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 342, height: 103)
+        layout.itemSize = CGSize(width: 342 * Constraint.xCoeff, height: 103 * Constraint.yCoeff)
         layout.minimumLineSpacing = 10
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .clear
@@ -81,7 +81,7 @@ class TimerViewController: UIViewController {
     private lazy var circularProgressView: CircularProgressView = {
         let view = CircularProgressView()
         view.trackColor = UIColor.lightGray
-        view.progressColor = UIColor(hexString: "#E5D820")
+        view.progressColor = UIColor.redColor
         view.setProgress(to: 1.0)
         return view
     }()
@@ -101,7 +101,7 @@ class TimerViewController: UIViewController {
     private lazy var startButton: UIButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 216 * Constraint.xCoeff, height: 60 * Constraint.yCoeff))
         view.setTitle("Play", for: .normal)
-        view.backgroundColor = UIColor(hexString: "#E5D820")
+        view.backgroundColor = UIColor.redColor
         view.layer.cornerRadius = 26
         view.titleLabel?.font = UIFont.latoRegular(size: 16)
         view.setTitleColor(UIColor(hexString: "#FFFFFF"), for: .normal)
@@ -124,7 +124,7 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hexString: "#101538")
+        view.backgroundColor = UIColor.blackBackgroundColor
         view.applyGradientBackground()
         setup()
         setupConstraints()
@@ -215,7 +215,7 @@ class TimerViewController: UIViewController {
                 self.timer?.invalidate()
                 self.isTimerRunning = false
                 self.startButton.setTitle("Complete", for: .normal)
-                self.startButton.backgroundColor = UIColor(hexString: "#E5D820")
+                self.startButton.backgroundColor = UIColor.redColor
             }
         }
     }
@@ -223,7 +223,7 @@ class TimerViewController: UIViewController {
     private func pauseTimer() {
         isTimerRunning = false
         startButton.setTitle("Play", for: .normal)
-        startButton.backgroundColor = UIColor(hexString: "E5D820")
+        startButton.backgroundColor = UIColor.redColor
         timer?.invalidate()
     }
     
