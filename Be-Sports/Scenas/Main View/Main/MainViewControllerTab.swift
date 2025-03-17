@@ -1,9 +1,4 @@
-//
-//  MainViewController.swift
-//  Betus
-//
-//  Created by Gio's Mac on 12.12.24.
-//
+
 
 import UIKit
 

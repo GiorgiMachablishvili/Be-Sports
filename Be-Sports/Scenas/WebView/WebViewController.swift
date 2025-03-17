@@ -1,9 +1,4 @@
-//
-//  WebViewController.swift
-//  Betus
-//
-//  Created by Gio's Mac on 13.12.24.
-//
+
 
 import UIKit
 import WebKit

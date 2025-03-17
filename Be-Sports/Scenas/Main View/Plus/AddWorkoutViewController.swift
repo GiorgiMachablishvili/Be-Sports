@@ -1,9 +1,4 @@
-//
-//  AddWorkoutViewController.swift
-//  Betus
-//
-//  Created by Gio's Mac on 01.12.24.
-//
+
 
 import UIKit
 import SnapKit

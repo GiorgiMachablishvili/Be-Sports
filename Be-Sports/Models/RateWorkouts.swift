@@ -1,9 +1,4 @@
-//
-//  RateWorkouts.swift
-//  Be-Sports
-//
-//  Created by Gio's Mac on 17.03.25.
-//
+
 
 import UIKit
 

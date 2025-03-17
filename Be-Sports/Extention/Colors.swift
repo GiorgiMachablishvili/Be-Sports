@@ -1,9 +1,4 @@
-//
-//  Colors.swift
-//  Be-Sports
-//
-//  Created by Gio's Mac on 26.02.25.
-//
+
 
 import UIKit
 

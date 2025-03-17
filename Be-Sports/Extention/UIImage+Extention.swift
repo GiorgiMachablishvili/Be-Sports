@@ -1,9 +1,3 @@
-//
-//  UIImage+Extention.swift
-//  Betus
-//
-//  Created by Gio's Mac on 26.11.24.
-//
 
 import UIKit
 

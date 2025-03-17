@@ -1,9 +1,4 @@
-//
-//  WorkoutLikes.swift
-//  Betus
-//
-//  Created by Gio's Mac on 07.12.24.
-//
+
 
 import UIKit
 

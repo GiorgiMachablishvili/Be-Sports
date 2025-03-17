@@ -1,9 +1,4 @@
-//
-//  NonPropagatingButton.swift
-//  Betus
-//
-//  Created by Gio's Mac on 02.12.24.
-//
+
 
 import UIKit
 
