@@ -85,7 +85,7 @@ class WorkoutInfoCell: UICollectionViewCell {
         workoutInfoView.snp.remakeConstraints { make in
             make.bottom.equalTo(workoutImage.snp.bottom).offset(-8 * Constraint.xCoeff)
             make.leading.trailing.equalToSuperview().inset(8 * Constraint.xCoeff)
-            make.height.equalTo(116 * Constraint.yCoeff)
+            make.height.equalTo(144 * Constraint.yCoeff)
         }
 
         likeViewButton.snp.remakeConstraints { make in
@@ -129,6 +129,7 @@ class WorkoutInfoCell: UICollectionViewCell {
         workoutInfoView.timeView.remainingTime = Double(data.time)
         workoutInfoView.levelView.levelInfoLabel.text = data.level.rawValue
         isLiked = data.isSelected
+        workoutInfoView.ratingLabel.text = "\(data.rating)"
 
         likeViewButton.setTitle("\(data.completers.count)", for: .normal)
 

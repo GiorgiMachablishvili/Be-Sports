@@ -1,6 +1,8 @@
+
+
 import Foundation
 
-struct Workouts: Codable {
+struct WorkoutsAdd: Codable {
     let taskName: String
     let taskCount: Int
     let level: Level
@@ -12,11 +14,6 @@ struct Workouts: Codable {
     let isSelected: Bool
     let likeCount: Int
     let tasks: [Task]
-    private let rawRating: Double
-
-    var rating: Double {
-        return Double(String(format: "%.1f", rawRating)) ?? 0.0
-    }
 
     var time: Int {
         return tasks.reduce(0) { $0 + $1.time }
@@ -34,7 +31,6 @@ struct Workouts: Codable {
         case isSelected = "is_selected"
         case likeCount = "like_count"
         case tasks
-        case rawRating = "rating"
     }
 
     enum Level: Codable, Equatable {
@@ -77,3 +73,4 @@ struct Workouts: Codable {
         }
     }
 }
+

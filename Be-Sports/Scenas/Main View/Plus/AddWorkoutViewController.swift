@@ -185,6 +185,7 @@ class AddWorkoutViewController: UIViewController, ImageViewDelegate {
             "name": workoutNameString,
             "details": workoutDetailsString,
             "user_id": userIdString,
+//            "rating": 0.0,
             "tasks": tasks.map { task in
                 [
                     "time": task.time,
@@ -199,7 +200,7 @@ class AddWorkoutViewController: UIViewController, ImageViewDelegate {
         //MARK: url
         let url = "https://be-sport.org/api/v1/workouts/"
         NetworkManager.shared.showProgressHud(true, animated: true)
-        NetworkManager.shared.post(url: url, parameters: parameters, headers: nil) { [weak self] (result: Result<Workouts>) in
+        NetworkManager.shared.post(url: url, parameters: parameters, headers: nil) { [weak self] (result: Result<WorkoutsAdd>) in
             NetworkManager.shared.showProgressHud(false, animated: false)
             switch result {
             case .success(let workout):

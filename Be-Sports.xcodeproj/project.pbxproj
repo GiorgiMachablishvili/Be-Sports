@@ -33,6 +33,8 @@
 		E36BDCCE2CFEF98A00FA18FA /* Workouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36BDCCD2CFEF98A00FA18FA /* Workouts.swift */; };
 		E36E2F562CFE22E900613FBD /* NonPropagatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E2F552CFE22E900613FBD /* NonPropagatingButton.swift */; };
 		E36E2F582CFE57E800613FBD /* WorkoutInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36E2F572CFE57E800613FBD /* WorkoutInfo.swift */; };
+		E396AD892D8803D400383F6F /* RateWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AD882D8803D300383F6F /* RateWorkouts.swift */; };
+		E396AD8B2D8839E300383F6F /* WorkoutsAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396AD8A2D8839E300383F6F /* WorkoutsAdd.swift */; };
 		E39997E02CF7AD4300CF8E48 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39997DF2CF7AD4300CF8E48 /* AddTaskView.swift */; };
 		E39997E62CF7BDD900CF8E48 /* LikeWorkoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39997E52CF7BDD900CF8E48 /* LikeWorkoutViewCell.swift */; };
 		E39C83D92CF4A573003177BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C83D82CF4A573003177BF /* AppDelegate.swift */; };
@@ -68,6 +70,7 @@
 		E3B785DD2CF9D68300A0492A /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E3B785DC2CF9D68300A0492A /* SVProgressHUD */; };
 		E3B7E30B2CF876FC00ABCDC4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B7E30A2CF876FC00ABCDC4 /* UserInfo.swift */; };
 		E3B8DCAB2D078BCD005A8B19 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B8DCAA2D078BCD005A8B19 /* Task.swift */; };
+		E3C0D6ED2D79E1C70094D4D1 /* FeedBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C0D6EC2D79E1C70094D4D1 /* FeedBackView.swift */; };
 		E3CDA0392D0A1822006D513E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E3CDA0382D0A1822006D513E /* Kingfisher */; };
 		E3E8CD4D2D6F293E005B0FD2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E8CD4C2D6F293E005B0FD2 /* Colors.swift */; };
 /* End PBXBuildFile section */
@@ -99,6 +102,8 @@
 		E36BDCCD2CFEF98A00FA18FA /* Workouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workouts.swift; sourceTree = "<group>"; };
 		E36E2F552CFE22E900613FBD /* NonPropagatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonPropagatingButton.swift; sourceTree = "<group>"; };
 		E36E2F572CFE57E800613FBD /* WorkoutInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInfo.swift; sourceTree = "<group>"; };
+		E396AD882D8803D300383F6F /* RateWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateWorkouts.swift; sourceTree = "<group>"; };
+		E396AD8A2D8839E300383F6F /* WorkoutsAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsAdd.swift; sourceTree = "<group>"; };
 		E39816172D0DD622002F5E12 /* Be-Sports.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Be-Sports.entitlements"; sourceTree = "<group>"; };
 		E39997DF2CF7AD4300CF8E48 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		E39997E52CF7BDD900CF8E48 /* LikeWorkoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeWorkoutViewCell.swift; sourceTree = "<group>"; };
@@ -133,6 +138,7 @@
 		E3B785D02CF9A89800A0492A /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		E3B7E30A2CF876FC00ABCDC4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		E3B8DCAA2D078BCD005A8B19 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E3C0D6EC2D79E1C70094D4D1 /* FeedBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackView.swift; sourceTree = "<group>"; };
 		E3E8CD4C2D6F293E005B0FD2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +172,7 @@
 				E32C49F32CF5EAFF00C650B3 /* TimerViewController.swift */,
 				E35A458D2D08979A00C99907 /* WorkoutTaskViewCell.swift */,
 				E32C49F52CF5EB2900C650B3 /* CircularProgressView.swift */,
+				E3C0D6EC2D79E1C70094D4D1 /* FeedBackView.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -363,10 +370,12 @@
 				E3B7E30A2CF876FC00ABCDC4 /* UserInfo.swift */,
 				E35CAB562D145100009B09C0 /* BlockUserOrWorkout.swift */,
 				E36BDCCD2CFEF98A00FA18FA /* Workouts.swift */,
+				E396AD8A2D8839E300383F6F /* WorkoutsAdd.swift */,
 				E36E2F572CFE57E800613FBD /* WorkoutInfo.swift */,
 				E3A372972D024E260008ED9C /* LikeResponse.swift */,
 				E39D36C52D03B31900A5ABCA /* WorkoutLikes.swift */,
 				E39D36C32D03450900A5ABCA /* EmptyResponse.swift */,
+				E396AD882D8803D300383F6F /* RateWorkouts.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -473,8 +482,10 @@
 				E36E2F582CFE57E800613FBD /* WorkoutInfo.swift in Sources */,
 				E39997E02CF7AD4300CF8E48 /* AddTaskView.swift in Sources */,
 				E39C84242CF4BD5B003177BF /* LikedWorkoutViewController.swift in Sources */,
+				E396AD892D8803D400383F6F /* RateWorkouts.swift in Sources */,
 				E3B8DCAB2D078BCD005A8B19 /* Task.swift in Sources */,
 				E32C49F42CF5EAFF00C650B3 /* TimerViewController.swift in Sources */,
+				E3C0D6ED2D79E1C70094D4D1 /* FeedBackView.swift in Sources */,
 				E39C83D92CF4A573003177BF /* AppDelegate.swift in Sources */,
 				E3B7E30B2CF876FC00ABCDC4 /* UserInfo.swift in Sources */,
 				E3AE85072CF751AA00202CBB /* WarningView.swift in Sources */,
@@ -483,6 +494,7 @@
 				E39D36C42D03450900A5ABCA /* EmptyResponse.swift in Sources */,
 				E3667EE82CF4F17C00D1AE68 /* WorkoutInfoCell.swift in Sources */,
 				E35A458E2D08979A00C99907 /* WorkoutTaskViewCell.swift in Sources */,
+				E396AD8B2D8839E300383F6F /* WorkoutsAdd.swift in Sources */,
 				E3B785D12CF9A89800A0492A /* NetworkManger.swift in Sources */,
 				E361C1402D06E83D00B9D3D7 /* WorkLevelViewCell.swift in Sources */,
 				E3667EEE2CF4F5CB00D1AE68 /* TaskView.swift in Sources */,
@@ -654,7 +666,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Be-Sports/Be-Sports.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.8;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_TEAM = D88SLNJTY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Be-Sports/Info.plist";
@@ -688,7 +700,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Be-Sports/Be-Sports.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.8;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_TEAM = D88SLNJTY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Be-Sports/Info.plist";

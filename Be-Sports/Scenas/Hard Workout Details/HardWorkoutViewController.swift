@@ -65,7 +65,7 @@ class HardWorkoutViewController: UIViewController {
 
     lazy var likeViewButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("44", for: .normal)
+        view.setTitle("0", for: .normal)
         view.setImage(UIImage(named: "heart")?.resize(to: CGSize(width: 16 * Constraint.xCoeff, height: 16 * Constraint.yCoeff)), for: .normal)
         view.tintColor = UIColor(hexString: "FFFFFF")
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16 * Constraint.yCoeff, weight: .bold)
@@ -240,7 +240,7 @@ class HardWorkoutViewController: UIViewController {
             make.top.equalTo(workoutImage.snp.bottom).offset(10 * Constraint.yCoeff)
             make.centerX.equalToSuperview()
             make.width.equalTo(366 * Constraint.xCoeff)
-            make.height.equalTo(122 * Constraint.yCoeff)
+            make.height.equalTo(145 * Constraint.yCoeff)
         }
 
         workoutDetailsYellowButton.snp.remakeConstraints { make in

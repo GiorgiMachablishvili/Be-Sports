@@ -19,6 +19,22 @@ class WorkoutInfoView: UIView {
         return view
     }()
 
+    lazy var ratingImage: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = UIImage(named: "star")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+
+    lazy var ratingLabel: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.latoBold(size: 14)
+        view.textColor = UIColor(hexString: "FFFFFF")
+        view.textAlignment = .left
+        view.text = "0.0"
+        return view
+    }()
+
     lazy var taskView: TaskView = {
         let view = TaskView()
         view.layer.cornerRadius = 16
@@ -51,6 +67,8 @@ class WorkoutInfoView: UIView {
 
     private func setup() {
         addSubview(workoutLevel)
+        addSubview(ratingImage)
+        addSubview(ratingLabel)
         addSubview(taskView)
         addSubview(timeView)
         addSubview(levelView)
@@ -63,8 +81,19 @@ class WorkoutInfoView: UIView {
             make.height.equalTo(19 * Constraint.yCoeff)
         }
 
-        taskView.snp.remakeConstraints { make in
+        ratingImage.snp.remakeConstraints { make in
             make.top.equalTo(workoutLevel.snp.bottom).offset(8 * Constraint.yCoeff)
+            make.leading.equalTo(snp.leading).offset(20 * Constraint.xCoeff)
+            make.height.width.equalTo(20 * Constraint.yCoeff)
+        }
+
+        ratingLabel.snp.remakeConstraints { make in
+            make.centerY.equalTo(ratingImage)
+            make.leading.equalTo(ratingImage.snp.trailing).offset(4 * Constraint.xCoeff)
+        }
+
+        taskView.snp.remakeConstraints { make in
+            make.top.equalTo(ratingImage.snp.bottom).offset(8 * Constraint.yCoeff)
             make.trailing.equalTo(timeView.snp.leading).offset(-4 * Constraint.xCoeff)
             make.height.equalTo(51 * Constraint.yCoeff)
             make.width.equalTo(100 * Constraint.xCoeff)

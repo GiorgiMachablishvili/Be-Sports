@@ -285,11 +285,8 @@ class LikedWorkoutViewController: UIViewController {
                     object: nil
                 )
                 DispatchQueue.main.async {
-<<<<<<< Updated upstream
                     self?.infoLabel.isHidden = !(self!.likedWorkouts.isEmpty && !isGuestUser)
 
-=======
->>>>>>> Stashed changes
                     self?.collectionView.reloadData()
                     self?.infoLabel.isHidden = !self!.likedWorkouts.isEmpty
                 }
