@@ -257,7 +257,10 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
         let workout = displayedWorkouts[indexPath.row]
         let selectedLevel = workout.level.rawValue
 
+        // Configure the cell
         cell.configure(with: workout, selectedLevel: selectedLevel)
+
+        // Like button logic
         cell.didTapOnLikeButton = { [weak self] in
             self?.postLikeState(
                 userId: workout.userId ?? "",
@@ -285,21 +288,13 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let selectedWorkout = displayedWorkouts[indexPath.row]
-        
-        // 1) Check if workout is premium & user is not premium
-        let isUserPremium = UserDefaults.standard.bool(forKey: "isPremium")
-        if selectedWorkout.isPremium && !isUserPremium {
-            showPremiumRequiredAlert()
-            return
-        }
-        
-        // 2) If user is premium OR workout is non-premium, open HardWorkoutViewController
+        // Open HardWorkoutViewController
         guard let cell = collectionView.cellForItem(at: indexPath) as? WorkoutInfoCell,
               let selectedImage = cell.workoutImage.image else {
             return
         }
-        
+
+        let selectedWorkout = displayedWorkouts[indexPath.row]
         let hardWorkoutVC = HardWorkoutViewController()
         let likeNumber = cell.likeViewButton.title(for: .normal)
         
@@ -308,27 +303,5 @@ extension WorkoutViewController: UICollectionViewDelegate, UICollectionViewDataS
         hardWorkoutVC.likeViewButton.setTitle(likeNumber, for: .normal)
         hardWorkoutVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(hardWorkoutVC, animated: true)
-    }
-}
-
-// MARK: - Alert Logic
-extension WorkoutViewController {
-    private func showPremiumRequiredAlert() {
-        let alert = UIAlertController(
-            title: "Premium Required",
-            message: "This workout is only available to Premium members. Please purchase Premium to access it.",
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        alert.addAction(UIAlertAction(title: "Purchase", style: .default, handler: { [weak self] _ in
-            // Push PremiumScreen
-            let premiumVC = PremiumScreen(endpoint: "premium")
-            premiumVC.modalPresentationStyle = .fullScreen
-            self?.present(premiumVC, animated: true)
-        }))
-        
-        present(alert, animated: true)
     }
 }

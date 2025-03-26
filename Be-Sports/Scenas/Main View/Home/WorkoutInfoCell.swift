@@ -54,23 +54,8 @@ class WorkoutInfoCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var premiumBadgeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "PREMIUM"
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 12, weight: .bold)
-        label.textAlignment = .center
-        return label
-    }()
     
-    private lazy var premiumGradientLayer: CAGradientLayer = {
-        let gradientLayer = CAGradientLayer()
-        // Top-leading to bottom-trailing
-        gradientLayer.colors = [UIColor.redColor.cgColor, UIColor.blackBackgroundColor.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        return gradientLayer
-    }()
+    
     
     var isLiked = false
 
@@ -90,7 +75,7 @@ class WorkoutInfoCell: UICollectionViewCell {
     // Make sure the gradient layer always has the correct size
     override func layoutSubviews() {
         super.layoutSubviews()
-        premiumGradientLayer.frame = premiumBadgeView.bounds
+        
     }
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -108,8 +93,8 @@ class WorkoutInfoCell: UICollectionViewCell {
         
         // Add premium badge to the cell
         workoutImage.addSubview(premiumBadgeView)
-        premiumBadgeView.layer.insertSublayer(premiumGradientLayer, at: 0)
-        premiumBadgeView.addSubview(premiumBadgeLabel)
+        
+        
     }
 
     private func setupConstraints() {
@@ -140,10 +125,7 @@ class WorkoutInfoCell: UICollectionViewCell {
             make.width.equalTo(80)
         }
         
-        // Center the text inside the badge with a little inset
-        premiumBadgeLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(4)
-        }
+        
     }
 
     // MARK: - Button Interaction

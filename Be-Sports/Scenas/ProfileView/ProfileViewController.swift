@@ -46,29 +46,7 @@ class ProfileViewController: UIViewController {
         return stack
     }()
     
-    private lazy var restorePurchasesButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Restore Purchases", for: .normal)
-        view.backgroundColor = UIColor.clearBlur(withAlpha: 0.1)
-        view.layer.cornerRadius = 16
-        view.titleLabel?.font = UIFont.latoRegular(size: 16)
-        view.setTitleColor(UIColor(hexString: "FFFFFF"), for: .normal)
-        view.clipsToBounds = true
-        view.addTarget(self, action: #selector(pressRestorePurchasesButton), for: .touchUpInside)
-        return view
-    }()
-    
-    private lazy var activatePremiumButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Activate Premium", for: .normal)
-        view.backgroundColor = UIColor.clearBlur(withAlpha: 0.1)
-        view.layer.cornerRadius = 16
-        view.titleLabel?.font = UIFont.latoRegular(size: 16)
-        view.setTitleColor(UIColor(hexString: "FFFFFF"), for: .normal)
-        view.clipsToBounds = true
-        view.addTarget(self, action: #selector(pressActivatePremiumButton), for: .touchUpInside)
-        return view
-    }()
+    // Removed restorePurchasesButton & activatePremiumButton for this version
     
     private lazy var termsOfUseButton: UIButton = {
         let view = UIButton(frame: .zero)
@@ -182,38 +160,33 @@ class ProfileViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         
-        // Add your buttons to the stackView in the order you want them to appear
+        // Add your buttons to the stackView
         stackView.addArrangedSubview(termsOfUseButton)
         stackView.addArrangedSubview(privacyPolicyButton)
         stackView.addArrangedSubview(supportButton)
         stackView.addArrangedSubview(rateUsButton)
         stackView.addArrangedSubview(deleteAccountButton)
         stackView.addArrangedSubview(signInWithAppleButton)
-        stackView.addArrangedSubview(restorePurchasesButton)
-        stackView.addArrangedSubview(activatePremiumButton)
+        // Removed in-app purchase buttons
     }
     
     private func setupConstraints() {
-        // Left button pinned near top
         leftButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20 * Constraint.yCoeff)
             make.leading.equalToSuperview().offset(20 * Constraint.xCoeff)
             make.width.height.equalTo(44 * Constraint.xCoeff)
         }
         
-        // ScrollView below left button
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(leftButton.snp.bottom).offset(20 * Constraint.yCoeff)
             make.leading.trailing.bottom.equalToSuperview()
         }
         
-        // ContentView fills the ScrollView
         contentView.snp.makeConstraints { make in
             make.edges.equalTo(scrollView.contentLayoutGuide)
             make.width.equalTo(scrollView.frameLayoutGuide)
         }
         
-        // StackView centered horizontally inside contentView
         stackView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(20 * Constraint.yCoeff)
             make.leading.equalTo(contentView.snp.leading).offset(12 * Constraint.xCoeff)
@@ -221,7 +194,6 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(contentView.snp.bottom).offset(-20 * Constraint.yCoeff)
         }
         
-        // Define button sizes in the stack
         let buttonHeight = 59 * Constraint.yCoeff
         let buttonWidth = 366 * Constraint.xCoeff
         
@@ -231,9 +203,7 @@ class ProfileViewController: UIViewController {
             supportButton,
             rateUsButton,
             deleteAccountButton,
-            signInWithAppleButton,
-            restorePurchasesButton,
-            activatePremiumButton
+            signInWithAppleButton
         ].forEach { button in
             button.snp.makeConstraints { make in
                 make.width.equalTo(buttonWidth)
@@ -254,18 +224,6 @@ class ProfileViewController: UIViewController {
     
     @objc private func pressLeftButton() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func pressRestorePurchasesButton() {
-        let vc = PremiumScreen(endpoint: "premium#restore")
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
-    }
-    
-    @objc private func pressActivatePremiumButton() {
-        let vc = PremiumScreen(endpoint: "premium")
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
     }
     
     @objc private func pressTermsOfUserButton() {
@@ -324,7 +282,10 @@ class ProfileViewController: UIViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "Error", message: "Failed to delete account. \(error.localizedDescription)")
+                    self?.showAlert(
+                        title: "Error",
+                        message: "Failed to delete account. \(error.localizedDescription)"
+                    )
                 }
             }
         }
@@ -339,23 +300,32 @@ class ProfileViewController: UIViewController {
     }
     
     private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default))
         present(alert, animated: true)
     }
 }
 
 // MARK: - Apple Sign In
-
 extension ProfileViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+    ) {
         guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
         UserDefaults.standard.setValue(credential.user, forKey: "AccountCredential")
         createUser()
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Authorization failed: \(error.localizedDescription)")
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithError error: Error
+    ) {
+        print("Authorization failed:", error.localizedDescription)
         showAlert(title: "Sign In Failed", message: error.localizedDescription)
     }
 
@@ -379,15 +349,18 @@ extension ProfileViewController: ASAuthorizationControllerDelegate, ASAuthorizat
             headers: nil
         ) { [weak self] (result: Result<UserInfo>) in
             guard let self = self else { return }
+            
             DispatchQueue.main.async {
                 NetworkManager.shared.showProgressHud(false, animated: false)
                 UserDefaults.standard.setValue(false, forKey: "isGuestUser")
             }
+            
             switch result {
             case .success(let userInfo):
                 DispatchQueue.main.async {
-                    print("User created: \(userInfo)")
+                    print("User created:", userInfo)
                     UserDefaults.standard.setValue(userInfo.id, forKey: "userId")
+                    
                     if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                         let mainViewController = MainViewControllerTab()
                         let navigationController = UINavigationController(rootViewController: mainViewController)
@@ -398,13 +371,12 @@ extension ProfileViewController: ASAuthorizationControllerDelegate, ASAuthorizat
                 DispatchQueue.main.async {
                     self.showAlert(title: "Error", message: error.localizedDescription)
                 }
-                print("Error: \(error)")
+                print("Error creating user:", error)
             }
         }
     }
     
     @objc private func clickSignInWithAppleButton() {
-
         let authorizationProvider = ASAuthorizationAppleIDProvider()
         let request = authorizationProvider.createRequest()
         request.requestedScopes = [.email, .fullName]
