@@ -14,6 +14,7 @@ struct Workouts: Codable {
     let isSelected: Bool
     let likeCount: Int
     let tasks: [Task]
+    let isPremium: Bool
     private let rawRating: Double
 
     var rating: Double {
@@ -37,6 +38,7 @@ struct Workouts: Codable {
         case likeCount = "like_count"
         case tasks
         case rawRating = "rating"
+        case isPremium
     }
 
     enum Level: Codable, Equatable {

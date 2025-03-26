@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -8,32 +6,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
         window = UIWindow(windowScene: windowScene)
-//                ifUserISCreatedOrNot()
-//        let mainViewController = SignInView()
-//        window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+        PremiumManager.shared.start()
         setupInitialRootViewController()
         window?.makeKeyAndVisible()
     }
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//
-//        let window = UIWindow(windowScene: windowScene)
-//        window.rootViewController = MainViewControllerTab()
-//        window.makeKeyAndVisible()
-//        self.window = window
-//    }
-
-//    func ifUserISCreatedOrNot() {
-//        if let userId = UserDefaults.standard.string(forKey: "userId"), !userId.isEmpty {
-//            let mainViewController = MainViewControllerTab()
-//            UserDefaults.standard.setValue(false, forKey: "isGuestUser")
-//            window?.rootViewController = UINavigationController(rootViewController: mainViewController)
-//        } else {
-//            let signInViewController = SignInView()
-//            window?.rootViewController = UINavigationController(rootViewController: signInViewController)
-//        }
-//    }
 
     private func setupInitialRootViewController() {
         if let userId = UserDefaults.standard.string(forKey: "userId"), !userId.isEmpty {
@@ -48,12 +25,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
+    private func presentWelcomeScreen() {
+        let vc = WelcomeScreen()
+        vc.modalPresentationStyle = .fullScreen
+        guard let rootVC = window?.rootViewController else { return }
+        rootVC.present(vc, animated: true)
+    }
+
     func changeRootViewController(_ rootViewController: UIViewController, animated: Bool = true) {
-        // Get the current SceneDelegate's window
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let sceneDelegate = windowScene.delegate as? SceneDelegate,
               let window = sceneDelegate.window else { return }
-
         if animated {
             UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 window.rootViewController = rootViewController
@@ -64,31 +46,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-
-    }
-
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        presentWelcomeScreen()
     }
 
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-    }
-
-
+    func sceneDidDisconnect(_ scene: UIScene) {}
+    func sceneWillResignActive(_ scene: UIScene) {}
+    func sceneWillEnterForeground(_ scene: UIScene) {}
+    func sceneDidEnterBackground(_ scene: UIScene) {}
 }
-

@@ -73,6 +73,12 @@
 		E3C0D6ED2D79E1C70094D4D1 /* FeedBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C0D6EC2D79E1C70094D4D1 /* FeedBackView.swift */; };
 		E3CDA0392D0A1822006D513E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E3CDA0382D0A1822006D513E /* Kingfisher */; };
 		E3E8CD4D2D6F293E005B0FD2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E8CD4C2D6F293E005B0FD2 /* Colors.swift */; };
+		EBD868AC2D9451E10033816C /* PremiumWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD868AB2D9451E10033816C /* PremiumWorkoutCell.swift */; };
+		EBD868AE2D9453E40033816C /* SectionTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD868AD2D9453E40033816C /* SectionTitleHeaderView.swift */; };
+		EBD868B02D945C3D0033816C /* Premium.storekit in Resources */ = {isa = PBXBuildFile; fileRef = EBD868AF2D945C3D0033816C /* Premium.storekit */; };
+		EBD868B22D9479E90033816C /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD868B12D9479E90033816C /* WelcomeScreen.swift */; };
+		EBD868B42D947C490033816C /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD868B32D947C490033816C /* PremiumManager.swift */; };
+		EBD868B62D9485FB0033816C /* PremiumScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD868B52D9485FB0033816C /* PremiumScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +146,12 @@
 		E3B8DCAA2D078BCD005A8B19 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E3C0D6EC2D79E1C70094D4D1 /* FeedBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackView.swift; sourceTree = "<group>"; };
 		E3E8CD4C2D6F293E005B0FD2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EBD868AB2D9451E10033816C /* PremiumWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumWorkoutCell.swift; sourceTree = "<group>"; };
+		EBD868AD2D9453E40033816C /* SectionTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleHeaderView.swift; sourceTree = "<group>"; };
+		EBD868AF2D945C3D0033816C /* Premium.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Premium.storekit; sourceTree = "<group>"; };
+		EBD868B12D9479E90033816C /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		EBD868B32D947C490033816C /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
+		EBD868B52D9485FB0033816C /* PremiumScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +228,7 @@
 				E39816172D0DD622002F5E12 /* Be-Sports.entitlements */,
 				E39C83EC2CF4A619003177BF /* App */,
 				E39C83ED2CF4A641003177BF /* Scenas */,
-				E3B785CF2CF9A86D00A0492A /* NetworkManager */,
+				E3B785CF2CF9A86D00A0492A /* Utilities */,
 				E3B7E3092CF876C500ABCDC4 /* Models */,
 				E39C84102CF4AD47003177BF /* Constraints */,
 				E39C84062CF4A952003177BF /* Extention */,
@@ -231,6 +243,8 @@
 		E39C83EC2CF4A619003177BF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				EBD868B52D9485FB0033816C /* PremiumScreen.swift */,
+				EBD868B12D9479E90033816C /* WelcomeScreen.swift */,
 				E39C83D82CF4A573003177BF /* AppDelegate.swift */,
 				E39C83DA2CF4A573003177BF /* SceneDelegate.swift */,
 			);
@@ -319,6 +333,7 @@
 		E39C841E2CF4BCE6003177BF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EBD868AD2D9453E40033816C /* SectionTitleHeaderView.swift */,
 				E39C84212CF4BD46003177BF /* WorkoutViewController.swift */,
 				E32C49DE2CF5C19700C650B3 /* HomeHeaderView.swift */,
 				E3667EE72CF4F17C00D1AE68 /* WorkoutInfoCell.swift */,
@@ -327,6 +342,7 @@
 				E3667EED2CF4F5CB00D1AE68 /* TaskView.swift */,
 				E3667EEF2CF4F5D700D1AE68 /* TimeView.swift */,
 				E3667EF12CF4F5EC00D1AE68 /* LevelView.swift */,
+				EBD868AB2D9451E10033816C /* PremiumWorkoutCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -355,12 +371,13 @@
 			path = Plus;
 			sourceTree = "<group>";
 		};
-		E3B785CF2CF9A86D00A0492A /* NetworkManager */ = {
+		E3B785CF2CF9A86D00A0492A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EBD868B32D947C490033816C /* PremiumManager.swift */,
 				E3B785D02CF9A89800A0492A /* NetworkManger.swift */,
 			);
-			path = NetworkManager;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E3B7E3092CF876C500ABCDC4 /* Models */ = {
@@ -376,6 +393,7 @@
 				E39D36C52D03B31900A5ABCA /* WorkoutLikes.swift */,
 				E39D36C32D03450900A5ABCA /* EmptyResponse.swift */,
 				E396AD882D8803D300383F6F /* RateWorkouts.swift */,
+				EBD868AF2D945C3D0033816C /* Premium.storekit */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -460,6 +478,7 @@
 				E39C84002CF4A85C003177BF /* Lato-LightItalic.ttf in Resources */,
 				E39C83FD2CF4A85C003177BF /* Lato-BlackItalic.ttf in Resources */,
 				E39C83FE2CF4A85C003177BF /* Lato-Light.ttf in Resources */,
+				EBD868B02D945C3D0033816C /* Premium.storekit in Resources */,
 				E39C84022CF4A85C003177BF /* Lato-ThinItalic.ttf in Resources */,
 				E39C83E22CF4A575003177BF /* Assets.xcassets in Resources */,
 				E39C84052CF4A85C003177BF /* Lato-Regular.ttf in Resources */,
@@ -485,16 +504,19 @@
 				E396AD892D8803D400383F6F /* RateWorkouts.swift in Sources */,
 				E3B8DCAB2D078BCD005A8B19 /* Task.swift in Sources */,
 				E32C49F42CF5EAFF00C650B3 /* TimerViewController.swift in Sources */,
+				EBD868AE2D9453E40033816C /* SectionTitleHeaderView.swift in Sources */,
 				E3C0D6ED2D79E1C70094D4D1 /* FeedBackView.swift in Sources */,
 				E39C83D92CF4A573003177BF /* AppDelegate.swift in Sources */,
 				E3B7E30B2CF876FC00ABCDC4 /* UserInfo.swift in Sources */,
 				E3AE85072CF751AA00202CBB /* WarningView.swift in Sources */,
+				EBD868B62D9485FB0033816C /* PremiumScreen.swift in Sources */,
 				E39C84142CF4B4B5003177BF /* UiColorGradiation+Exttention.swift in Sources */,
 				E36BDCCE2CFEF98A00FA18FA /* Workouts.swift in Sources */,
 				E39D36C42D03450900A5ABCA /* EmptyResponse.swift in Sources */,
 				E3667EE82CF4F17C00D1AE68 /* WorkoutInfoCell.swift in Sources */,
 				E35A458E2D08979A00C99907 /* WorkoutTaskViewCell.swift in Sources */,
 				E396AD8B2D8839E300383F6F /* WorkoutsAdd.swift in Sources */,
+				EBD868B42D947C490033816C /* PremiumManager.swift in Sources */,
 				E3B785D12CF9A89800A0492A /* NetworkManger.swift in Sources */,
 				E361C1402D06E83D00B9D3D7 /* WorkLevelViewCell.swift in Sources */,
 				E3667EEE2CF4F5CB00D1AE68 /* TaskView.swift in Sources */,
@@ -506,12 +528,14 @@
 				E39C84082CF4A978003177BF /* UIFont+Extension.swift in Sources */,
 				E33682D02D0B0BEA00C31B28 /* MainViewControllerTab.swift in Sources */,
 				E361C1462D06EDCA00B9D3D7 /* TaskViewCell.swift in Sources */,
+				EBD868AC2D9451E10033816C /* PremiumWorkoutCell.swift in Sources */,
 				E39C84222CF4BD46003177BF /* WorkoutViewController.swift in Sources */,
 				E39C84122CF4AD6D003177BF /* Constraints.swift in Sources */,
 				E361C1422D06E85300B9D3D7 /* DescriptionViewCell.swift in Sources */,
 				E361C1442D06E85F00B9D3D7 /* AddTaskViewButtonCell.swift in Sources */,
 				E3667EF22CF4F5EC00D1AE68 /* LevelView.swift in Sources */,
 				E361C13E2D06E81500B9D3D7 /* NameViewCell.swift in Sources */,
+				EBD868B22D9479E90033816C /* WelcomeScreen.swift in Sources */,
 				E3667EF02CF4F5D700D1AE68 /* TimeView.swift in Sources */,
 				E39C83DB2CF4A573003177BF /* SceneDelegate.swift in Sources */,
 				E32C49F82CF5FDE500C650B3 /* UIImage+Extention.swift in Sources */,

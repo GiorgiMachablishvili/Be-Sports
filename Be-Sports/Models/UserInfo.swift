@@ -7,6 +7,7 @@ public struct UserInfo: Codable {
     let appleToken: String
     let pushToken: String
     let createdAt: String
+    let isPremium: Bool = false 
 
     enum CodingKeys: String, CodingKey {
         case id
