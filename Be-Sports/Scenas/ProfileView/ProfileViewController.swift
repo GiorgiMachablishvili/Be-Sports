@@ -258,12 +258,14 @@ class ProfileViewController: UIViewController {
     
     @objc private func pressRestorePurchasesButton() {
         let vc = PremiumScreen(endpoint: "premium#restore")
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     @objc private func pressActivatePremiumButton() {
         let vc = PremiumScreen(endpoint: "premium")
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     @objc private func pressTermsOfUserButton() {
