@@ -18,6 +18,8 @@
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
     "_storeKitErrors" : [
       {
         "current" : null,
@@ -97,10 +99,7 @@
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Monthly premium subscription",
           "subscriptionGroupID" : "C02B4178",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
+          "type" : "RecurringSubscription"
         },
         {
           "adHocOffers" : [
@@ -125,16 +124,13 @@
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Yearly Premium subscription",
           "subscriptionGroupID" : "C02B4178",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
+          "type" : "RecurringSubscription"
         }
       ]
     }
   ],
   "version" : {
-    "major" : 4,
+    "major" : 3,
     "minor" : 0
   }
 }

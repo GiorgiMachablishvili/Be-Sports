@@ -333,7 +333,6 @@
 		E39C841E2CF4BCE6003177BF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EBD868AD2D9453E40033816C /* SectionTitleHeaderView.swift */,
 				E39C84212CF4BD46003177BF /* WorkoutViewController.swift */,
 				E32C49DE2CF5C19700C650B3 /* HomeHeaderView.swift */,
 				E3667EE72CF4F17C00D1AE68 /* WorkoutInfoCell.swift */,
@@ -343,6 +342,7 @@
 				E3667EEF2CF4F5D700D1AE68 /* TimeView.swift */,
 				E3667EF12CF4F5EC00D1AE68 /* LevelView.swift */,
 				EBD868AB2D9451E10033816C /* PremiumWorkoutCell.swift */,
+				EBD868AD2D9453E40033816C /* SectionTitleHeaderView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -690,11 +690,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Be-Sports/Be-Sports.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.3;
+				CURRENT_PROJECT_VERSION = 2.1.5;
 				DEVELOPMENT_TEAM = D88SLNJTY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Be-Sports/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "BV Sports";
+				INFOPLIST_KEY_CFBundleDisplayName = "Beat Sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -704,7 +704,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.buss.workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -724,11 +724,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Be-Sports/Be-Sports.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.3;
+				CURRENT_PROJECT_VERSION = 2.1.5;
 				DEVELOPMENT_TEAM = D88SLNJTY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Be-Sports/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "BV Sports";
+				INFOPLIST_KEY_CFBundleDisplayName = "Beat Sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -738,7 +738,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.buss.workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

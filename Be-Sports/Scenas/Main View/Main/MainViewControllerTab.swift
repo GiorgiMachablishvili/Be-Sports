@@ -9,8 +9,6 @@ class MainViewControllerTab: UITabBarController,  UITabBarControllerDelegate {
         view.backgroundColor = UIColor.blackBackgroundColor
         self.delegate = self
 
-
-
         let workoutsViewVC = WorkoutViewController()
         let likedWorkoutVC = LikedWorkoutViewController()
         let addWorkoutsVC = AddWorkoutViewController()
